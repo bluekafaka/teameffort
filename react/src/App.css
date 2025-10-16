@@ -1,0 +1,72 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 100%;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: clamp(120px, 25vw, 400px);
+  height: auto;
+  display: block;
+
+  /* animation */
+  opacity: 0;
+  filter: brightness(0) invert(1) drop-shadow(0 0 1px white);
+  transform: scale(0.95);
+  animation: 
+    fadeIn 1.8s ease-out forwards,
+    pulseGlow 3.5s ease-in-out 6s infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.25);
+    filter: brightness(0) invert(1) drop-shadow(0 0 0px white);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(0) invert(1) drop-shadow(0 0 1px white);
+
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    filter: brightness(0) invert(1)
+      drop-shadow(0 0 1px white);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(0) invert(1) 
+      drop-shadow(0 0 1px white)
+      drop-shadow(0 0 2px white)
+      drop-shadow(0 0 3px white);
+    transform: scale(1.03);
+  }
+  100% {
+    filter: brightness(0) invert(1) 
+      drop-shadow(0 0 1px white);
+    transform: scale(1);
+  }
+}
+
+.noise-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
